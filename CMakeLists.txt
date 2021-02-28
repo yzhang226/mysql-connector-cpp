@@ -66,18 +66,18 @@ ENDIF()
 #
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
+include("cmake/HunterGate.cmake")
+HunterGate(
+        URL "https://github.com/cpp-pm/hunter/archive/v0.23.295.tar.gz"
+        SHA1 "8a3447594fa5948cc7c6888dd86a9e823259c69f"
+)
+
 
 ##########################################################################
 
 PROJECT(MySQL_CONCPP)
 
 # Load cmake modules
-
-include("cmake/HunterGate.cmake")
-HunterGate(
-        URL "https://github.com/cpp-pm/hunter/archive/v0.23.295.tar.gz"
-        SHA1 "8a3447594fa5948cc7c6888dd86a9e823259c69f"
-)
 
 include(cdk/cmake/setup.cmake)
 include(cmake/setup.cmake)
