@@ -50,6 +50,14 @@ endif()
 
 message(STATUS "Setting up Protobuf.")
 
+hunter_add_package(Protobuf)
+find_package(Protobuf CONFIG REQUIRED)
+#target_link_libraries(... protobuf::libprotobuf)
+
+message("use hunter Protobuf")
+
+return()
+
 set(PB_SOURCE_DIR "${PROJECT_SOURCE_DIR}/protobuf")
 set(PB_BINARY_DIR "${PROJECT_BINARY_DIR}/protobuf")
 set(config_stamp "${PB_BINARY_DIR}/config.stamp")

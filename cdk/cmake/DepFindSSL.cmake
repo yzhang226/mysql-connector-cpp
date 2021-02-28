@@ -164,6 +164,12 @@ endfunction(check_x509_functions)
 
 function(find_openssl)
 
+  hunter_add_package(OpenSSL)
+  find_package(OpenSSL REQUIRED)
+#    target_link_libraries(foo PUBLIC OpenSSL::SSL OpenSSL::Crypto)
+
+  message("use hunter openssl")
+
   set(hints)
   if(OPENSSL_ROOT_DIR)
     set(hints HINTS ${OPENSSL_ROOT_DIR} NO_DEFAULT_PATH)

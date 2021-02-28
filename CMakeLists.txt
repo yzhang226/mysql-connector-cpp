@@ -27,15 +27,19 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA
 
 
-CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.10.2)
 
 CMAKE_POLICY(VERSION 3.1)
 cmake_policy(SET CMP0022 NEW)
 
+set(CMAKE_VERBOSE_MAKEFILE ON)
+set(CMAKE_CXX_STANDARD 11)
 
 SET(BUILDTYPE_DOCSTRING
  "Choose the type of build, options are: None(CMAKE_CXX_FLAGS or
  CMAKE_C_FLAGS used) Debug Release RelWithDebInfo MinSizeRel")
+
+
 
 #
 # If cmake is invoked with -DCMAKE_BUILD_TYPE,
@@ -53,7 +57,9 @@ ENDIF()
 # Thanks to this, we can detect if user has set CMAKE_INSTALL_PREFIX
 # or not, and then set our own default in the latter case.
 #
-set(CMAKE_INSTALL_PREFIX "" CACHE PATH "Install location")
+
+# use hunter install dir
+#set(CMAKE_INSTALL_PREFIX "" CACHE PATH "Install location")
 
 #
 # Enable grouping targets into folders for IDE tools
@@ -67,10 +73,17 @@ PROJECT(MySQL_CONCPP)
 
 # Load cmake modules
 
+include("cmake/HunterGate.cmake")
+HunterGate(
+        URL "https://github.com/cpp-pm/hunter/archive/v0.23.295.tar.gz"
+        SHA1 "8a3447594fa5948cc7c6888dd86a9e823259c69f"
+)
+
 include(cdk/cmake/setup.cmake)
 include(cmake/setup.cmake)
 
 include(platform)
+# use hunter deps, so remove dep find function
 include(dependency)      # find_dependency()
 include(config_options)  # add_config_option()
 include(libutils)        # merge_libraries()
@@ -323,7 +336,7 @@ INCLUDE_DIRECTORIES(include)
 # Note: it is included before setting higher warning levels.
 #
 
-add_config_option(WITH_JDBC BOOL DEFAULT OFF
+add_config_option(WITH_JDBC BOOL DEFAULT ON
  "Whether to build a variant of connector library which implements legacy JDBC API"
 )
 

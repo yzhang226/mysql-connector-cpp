@@ -129,24 +129,26 @@ set(INSTALL_LIB_DIR_STATIC "${INSTALL_LIB_DIR_STATIC}"
 #  Default install location
 #
 
-if(NOT CMAKE_INSTALL_PREFIX)
+# use hunter install location
 
-  if(WIN32)
-
-    if(DEFINED ENV{HOMEPATH})
-      file(TO_CMAKE_PATH "$ENV{HOMEDRIVE}$ENV{HOMEPATH}" install_home)
-    else()
-      set(install_home "C:/Program Files (x86)")
-    endif()
-    set(CMAKE_INSTALL_PREFIX "${install_home}/MySQL/MySQL Connector C++ ${CONCPP_PACKAGE_BASE_VERSION}")
-
-  else()
-
-    set(CMAKE_INSTALL_PREFIX "/usr/local/mysql/connector-c++-${CONCPP_PACKAGE_BASE_VERSION}")
-
-  endif()
-
-endif()
+#if(NOT CMAKE_INSTALL_PREFIX)
+#
+#  if(WIN32)
+#
+#    if(DEFINED ENV{HOMEPATH})
+#      file(TO_CMAKE_PATH "$ENV{HOMEDRIVE}$ENV{HOMEPATH}" install_home)
+#    else()
+#      set(install_home "C:/Program Files (x86)")
+#    endif()
+#    set(CMAKE_INSTALL_PREFIX "${install_home}/MySQL/MySQL Connector C++ ${CONCPP_PACKAGE_BASE_VERSION}")
+#
+#  else()
+#
+#    set(CMAKE_INSTALL_PREFIX "/usr/local/mysql/connector-c++-${CONCPP_PACKAGE_BASE_VERSION}")
+#
+#  endif()
+#
+#endif()
 
 
 #

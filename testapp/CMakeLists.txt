@@ -138,7 +138,7 @@ if(OPENSSL_FOUND)
   MESSAGE(STATUS "OPENSSL_CRYPTO_LIBRARY = ${OPENSSL_CRYPTO_LIBRARY}")
 endif()
 
-option(WITH_JDBC "Also build the JDBC API test application" OFF)
+option(WITH_JDBC "Also build the JDBC API test application" ON)
 
 option(BUILD_STATIC "Link statically with the connector library" OFF)
 

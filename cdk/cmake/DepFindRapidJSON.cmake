@@ -38,6 +38,14 @@ endif()
 
 message(STATUS "Setting up RapidJSON.")
 
+hunter_add_package(RapidJSON)
+find_package(RapidJSON CONFIG REQUIRED)
+#target_link_libraries(... RapidJSON::rapidjson)
+
+message("use hunter RapidJSON")
+
+return()
+
 # TODO: how to make it GLOBAL...
 
 add_library(rapidjson-if INTERFACE)
